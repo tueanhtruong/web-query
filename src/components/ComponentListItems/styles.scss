@@ -1,0 +1,10 @@
+@use 'src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-list-item {
+  .cmp-list-item {
+    &__loading {
+      align-self: center;
+    }
+  }
+}

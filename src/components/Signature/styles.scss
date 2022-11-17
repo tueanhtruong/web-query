@@ -1,0 +1,51 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-signature {
+  .cmp-signature {
+    &__table {
+      width: 100%;
+      height: 240px;
+      display: block;
+    }
+    &__container {
+      position: relative;
+      border: $default-border;
+      &.hasError {
+        border-color: $color-danger;
+      }
+    }
+    &__footer {
+      position: absolute;
+      bottom: 40px;
+      left: 0;
+      width: 100%;
+      font-size: 14px;
+      user-select: none;
+      -webkit-user-drag: none;
+      color: $color-placeholder;
+
+      &::before {
+        content: '';
+        width: 70%;
+        border-bottom: 1px solid $color-placeholder;
+        position: absolute;
+        height: 1px;
+        bottom: -5px;
+      }
+
+      @include mobileScreen {
+        display: none;
+      }
+
+      &__icon {
+        position: absolute;
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+        cursor: pointer;
+        color: $color-danger;
+      }
+    }
+  }
+}

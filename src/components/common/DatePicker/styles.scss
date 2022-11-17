@@ -1,0 +1,30 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-datepicker {
+  & &__input--error:not(:disabled) {
+    border-color: $color-danger;
+  }
+
+  & &__error {
+    margin-top: 4px;
+    color: $color-danger;
+    font: {
+      size: 14px;
+    }
+  }
+
+  & &__input {
+    height: 40px;
+    padding: 0 16px;
+    border: 1px solid #d6d6d6;
+    background-color: #ffffff;
+    transition: all 0.2s ease-in-out;
+    width: 100%;
+  }
+
+  .react-datepicker-popper {
+    transition: all 0.2s ease-in-out;
+    opacity: 1;
+  }
+}

@@ -1,0 +1,24 @@
+{
+  "extends": [
+    "react-app",
+    "plugin:jsx-a11y/recommended",
+    "plugin:security/recommended"
+  ],
+  "plugins": [
+    "jsx-a11y",
+    "react-hooks",
+    "security"
+  ],
+  "rules": {
+    "react/self-closing-comp": [
+      "error",
+      {
+        "component": true,
+        "html": true
+      }
+    ],
+    "import/no-anonymous-default-export": [
+      "off"
+    ]
+  }
+}

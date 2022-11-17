@@ -1,0 +1,12 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-logo {
+  width: 100%;
+
+  flex-wrap: nowrap;
+
+  &__img {
+    object-fit: contain;
+  }
+}

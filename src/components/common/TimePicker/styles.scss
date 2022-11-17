@@ -1,0 +1,20 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-datepicker__time {
+  .react-datepicker-wrapper {
+    .react-datepicker__input-container {
+      &::after {
+        content: '';
+        display: block;
+        position: absolute;
+        top: calc(50% - 7px);
+        right: 16px;
+        width: 16px;
+        height: 16px;
+        background: url('~src/assets/images/icons/ic_clock.png') no-repeat;
+        background-size: contain;
+      }
+    }
+  }
+}

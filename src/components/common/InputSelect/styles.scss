@@ -1,0 +1,30 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-input-select {
+  display: flex;
+  flex-direction: row;
+  border: $default-border;
+  border-radius: $input-boder-radius;
+  height: $input-normal;
+  width: 100%;
+
+  &--error {
+    border-color: $color-danger;
+  }
+
+  &__select {
+    height: $input-normal;
+    border: none;
+  }
+
+  &__input {
+    padding: $input-padding;
+    // background-color: $color-white;
+    transition: $default-transition;
+    font-size: $body-size;
+    border: none;
+    border-radius: $input-boder-radius;
+    width: 100%;
+  }
+}

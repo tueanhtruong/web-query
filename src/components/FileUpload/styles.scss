@@ -1,0 +1,34 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.cmp-file-upload {
+  .cmp-file-upload {
+    &__body {
+      border: 1px dashed $color-primary;
+      border-radius: 8px;
+      height: 80px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: $color-black-300;
+
+      @include hover;
+
+      @include focus {
+        border-color: $color-primary;
+      }
+    }
+
+    &__input {
+      display: none;
+    }
+
+    &__error {
+      margin-top: 4px;
+      color: $color-danger;
+      font: {
+        size: 14px;
+      }
+    }
+  }
+}

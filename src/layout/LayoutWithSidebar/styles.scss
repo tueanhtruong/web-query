@@ -1,0 +1,43 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.ctn-layout {
+  flex-direction: row;
+
+  &.container {
+    width: 100%;
+    padding-left: 8px;
+    padding-right: 8px;
+  }
+
+  &__sidebar {
+  }
+
+  &__body {
+    margin-left: 32px;
+    margin-bottom: 40px;
+  }
+
+  &__body.has-footer {
+    margin-bottom: 80px;
+  }
+
+  &__footer-fixed {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    background-color: $color-white;
+    box-shadow: $default-shadow;
+
+    height: $navbar-height;
+    justify-content: center;
+  }
+
+  @include mobileScreen {
+    &__body {
+      margin-left: 0;
+    }
+  }
+}

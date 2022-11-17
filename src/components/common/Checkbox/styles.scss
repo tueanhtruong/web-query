@@ -1,0 +1,119 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-checkbox {
+  position: relative;
+
+  &__disabled {
+    opacity: 0.6;
+    pointer-events: none;
+  }
+
+  &__disabled &__label svg {
+    fill: $color-text-inactive;
+  }
+
+  &__disabled &__input:checked + &__label svg polyline {
+    fill: $color-primary;
+  }
+
+  &__label {
+    display: inline-flex;
+    position: relative;
+    cursor: pointer;
+    align-items: center;
+    -webkit-tap-highlight-color: transparent;
+    transform: translate3d(0, 0, 0);
+    margin: 0;
+  }
+
+  &__label svg {
+    position: relative;
+    z-index: 1;
+    fill: none;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+    stroke: $color-black-200;
+    stroke-width: 1;
+    transform: translate3d(0, 0, 0);
+    transition: all 0.4s ease;
+  }
+
+  &__label svg path {
+    stroke-dasharray: 60;
+    stroke-dashoffset: 0;
+    // transition: all 0.3s linear;
+    // transition-delay: 0.1s;
+  }
+  &__label svg polyline {
+    stroke-dasharray: 22;
+    stroke-dashoffset: 66;
+    transition: all 0.2s linear;
+  }
+
+  &__error {
+    margin-top: 4px;
+    color: $color-danger;
+    font-size: 14px;
+  }
+
+  &__label:hover svg {
+    transition: all 0s;
+    stroke: $color-secondary;
+  }
+
+  &__input:checked + &__label svg {
+    stroke: $color-primary;
+  }
+
+  &__input:checked + &__label svg path {
+    // stroke-dashoffset: 60;
+    // transition-delay: 0s;
+    fill: $color-primary;
+  }
+
+  &__input:checked + &__label svg polyline {
+    stroke-dashoffset: 42;
+    stroke: $color-white;
+    // transition-delay: 0.15s;
+  }
+
+  &__label--text {
+    margin-left: 12px;
+    line-height: 20px;
+    font: {
+      weight: $font-weight-regular;
+      size: 14px;
+    }
+  }
+
+  &__label--text a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  &__label--text a:hover {
+    text-decoration: underline;
+  }
+}
+
+.cmp-checkbox-group {
+  & &__column {
+    display: inline-flex;
+
+    @include mobileScreen {
+      display: block;
+      width: 100% !important;
+    }
+  }
+
+  & &__error {
+    margin-top: 4px;
+    color: $color-danger;
+    font: {
+      size: 14px;
+    }
+  }
+
+  text-align: left;
+}

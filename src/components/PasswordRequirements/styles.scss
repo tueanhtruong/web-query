@@ -1,0 +1,16 @@
+@use 'src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-password-requirement {
+  &--accepted {
+    color: $color-green;
+  }
+
+  &--rejected {
+    color: $color-danger;
+  }
+
+  @include mobileScreen {
+    padding: 16px 12px;
+  }
+}

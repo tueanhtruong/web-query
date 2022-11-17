@@ -1,0 +1,159 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-sidebar {
+  z-index: 120;
+  transition: $default-linear-trans-med;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: $sidebar-width;
+  animation: jumpRight 0.6s;
+  background-color: $color-white;
+  box-shadow: 0px 4px 6px rgba(167, 167, 167, 0.25);
+  height: 100%;
+  overflow-x: hidden;
+
+  &::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  &--collapse {
+    width: $sidebar-mini-width;
+  }
+
+  &--mini {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: $sidebar-width;
+  }
+
+  &--mini.cmp-sidebar--collapse {
+    transform: translateX(-100%);
+  }
+
+  &__logo {
+    height: 2.5rem;
+    object-fit: cover;
+  }
+
+  &__toggle-button {
+    position: fixed;
+    left: calc(#{$sidebar-width} - 16px);
+    top: calc(#{$navbar-height} - 16px);
+    font-size: 24px;
+    border-radius: 24px;
+    background-color: $color-white;
+    padding: 4px;
+    z-index: 198;
+    transition: $default-linear-trans-med;
+    box-shadow: 1px 2px 4px rgba(137, 137, 137, 0.25);
+    animation: jumpRight 0.6s;
+
+    &--closed {
+      transform: rotateY(180deg);
+      left: calc(#{$sidebar-mini-width} - 16px);
+    }
+
+    &--closed.is--mini {
+      left: -4px;
+      border-radius: 24px 0 0 24px;
+    }
+
+    @include hover {}
+  }
+
+  svg {
+    font-size: 24px;
+    color: $color-black-300;
+  }
+
+  &__container {
+    width: 100%;
+    height: 100%;
+    animation: jumpRight 0.5s;
+    border-radius: $default-border-radius;
+    transition: 0.2s;
+  }
+
+  &__header {
+    height: $navbar-height;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px;
+  }
+
+  &__item {
+    height: 56px;
+    position: relative;
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    padding: 24px;
+    transition: $default-linear-trans;
+    color: $color-black-500;
+
+    &--closed {
+      justify-content: center;
+    }
+
+    @include hover {
+      background-color: #d7e2ff;
+      color: $color-primary;
+      text-decoration: none;
+
+      >svg {
+        color: $color-primary;
+      }
+    }
+
+    &--active {
+      background-color: #d7e2ff;
+      color: $color-primary;
+      text-decoration: none;
+
+      >svg {
+        color: $color-primary;
+      }
+    }
+
+    @include focus {
+      text-decoration: none;
+    }
+
+    &__text {
+      transition: $default-linear-trans-med;
+      width: 240px;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-left: 16px;
+      font-size: 16px;
+      font-weight: 500;
+
+      &--closed {
+        margin-left: 0;
+        width: 0;
+      }
+    }
+  }
+
+  &__footer {
+    &__text {
+      overflow: hidden;
+    }
+  }
+}
+
+@keyframes jumpRight {
+  from {
+    opacity: 0;
+    transform: translateX(-100px);
+  }
+
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}

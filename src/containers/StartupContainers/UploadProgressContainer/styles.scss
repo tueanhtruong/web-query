@@ -1,0 +1,101 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+// handle when modal opening
+.is-clipped .ctn-upload__container {
+  bottom: 8px;
+}
+
+.ctn-upload {
+  &__container {
+    z-index: 1023;
+    position: fixed;
+    bottom: 80px;
+    left: 8px;
+
+    padding: 8px 12px;
+    border-radius: 4px;
+
+    background-color: $color-white;
+    box-shadow: $default-shadow;
+
+    width: 400px;
+
+    @include mobileScreen {
+      width: auto;
+      right: 8px;
+    }
+  }
+
+  &__close {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+  }
+
+  &__item {
+    margin-bottom: 8px;
+  }
+
+  &__progress-bar-container {
+  }
+
+  &__progress-name {
+    margin-bottom: 2px;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+  }
+
+  &__progress-bar {
+    display: block;
+    height: 4px;
+    background-color: $color-primary;
+    width: 100%;
+    transition: 0.4s linear;
+  }
+
+  &__progress-percent {
+    margin-left: 4px;
+  }
+}
+
+.file-transition-enter {
+  opacity: 0;
+}
+
+.file-transition-enter-active {
+  opacity: 1;
+  transition: opacity 0.4s;
+}
+
+.file-transition-exit {
+  opacity: 1;
+}
+
+.file-transition-exit-active {
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.upload-transition-enter {
+  opacity: 0;
+  transform: translateY(100px);
+}
+
+.upload-transition-enter-active {
+  opacity: 1;
+  transition: all 0.4s;
+  transform: none;
+}
+
+.upload-transition-exit {
+  opacity: 1;
+  transform: none;
+}
+
+.upload-transition-exit-active {
+  opacity: 0;
+  transition: all 0.4s;
+  transform: translateY(100px);
+}

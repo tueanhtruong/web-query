@@ -1,0 +1,41 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+.cmp-input-file {
+  .cmp-input-file {
+    &__input {
+      display: none;
+    }
+    &__button {
+      width: fit-content;
+      &.hasError {
+        border-color: $color-danger;
+      }
+    }
+    &__name {
+      font-size: 14px;
+      font-weight: 500;
+      color: $color-link;
+      margin-right: 36px;
+    }
+    &__icon {
+      margin-right: 8px;
+      &--trash {
+        font-size: 20px;
+        cursor: pointer;
+      }
+    }
+  }
+  .jump-in {
+    animation: jump_in 0.2s;
+  }
+  @keyframes jump_in {
+    from {
+      opacity: 0;
+      transform: scale(0);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+}

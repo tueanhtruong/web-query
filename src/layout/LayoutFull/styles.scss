@@ -1,0 +1,11 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.ctn-layout-full {
+  flex-direction: row;
+  padding: 40px 8px;
+
+  @include mobileScreen {
+    padding: 20px 8px;
+  }
+}

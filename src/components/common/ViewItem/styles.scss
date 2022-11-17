@@ -1,0 +1,19 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-view-item {
+  &__label {
+    font-weight: 500;
+    color: $color-grey-600;
+    font-size: 14px;
+  }
+  &__value {
+    font-size: $body-size;
+  }
+
+  &__empty {
+    @include mobileScreen {
+      display: none;
+    }
+  }
+}

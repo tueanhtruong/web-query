@@ -1,0 +1,19 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.cmp-phoneinput {
+  &__input--error {
+    .PhoneInputCountry,
+    input {
+      border-color: $color-danger;
+    }
+  }
+
+  &__input--error.PhoneInput--focus {
+    .PhoneInputCountry,
+    input {
+      border-color: $color-danger;
+      // box-shadow: $error-shadow;
+    }
+  }
+}

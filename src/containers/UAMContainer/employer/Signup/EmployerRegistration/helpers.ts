@@ -1,0 +1,36 @@
+import { getStartCase } from 'src/utils';
+
+export const LegalNameEntity = [
+  'ACCOUNTING GENERAL SVC',
+  'AGRICULTURE DEPT',
+  'ATTORNEY GENERAL DEPT ',
+  'BUDGET AND FINANCE DEPT',
+  'BUSINESS ECON DEV & TRSM',
+  'CITY & COUNTY OF HONOLULU',
+  'COMMERCE & CONSMR AFFRS',
+  'COUNTY OF HAWAII',
+  'COUNTY OF KAUAI ',
+  'COUNTY OF MAUI',
+  'DEFENSE DEPARTMENT',
+  'EDUCATION DEPT',
+  'GOVERNORS OFFICE',
+  'HAWAIIAN AFFAIRS OFFICE',
+  'HAWAIIAN HOME LANDS DEPT',
+  'HEALTH DEPT',
+  'HUMAN RESOURCES',
+  'HUMAN SERVICES DEPT',
+  'JUDICIARY DEPT',
+  'LABOR DEPT',
+  'LAND & NATURAL RESOURCES',
+  'LEGISLATURE',
+  'LT GOVERNORS OFFICE ',
+  'PUBLIC SAFETY',
+  'TAXATION DEPT',
+  'TRANSPORTATION DEPT',
+  'UNIVERSITY OF HAWAII',
+];
+
+export const LegalNameEntityOptions = LegalNameEntity.map((item) => ({
+  label: getStartCase(item),
+  value: item,
+}));

@@ -1,0 +1,79 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+$radio-size: 16px;
+
+.cmp-radio {
+  position: relative;
+
+  & &__input {
+    position: absolute;
+    opacity: 0;
+    + .cmp-radio__label {
+      cursor: pointer;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      padding-left: $radio-size + 8px;
+      text-align: left;
+
+      &:before {
+        content: '';
+        border-radius: 100%;
+        border: 1px solid darken($color-white, 25%);
+        display: inline-block;
+        width: $radio-size;
+        height: $radio-size;
+        transition: all 250ms ease;
+        position: absolute;
+        left: 0;
+      }
+    }
+    &:checked {
+      + .cmp-radio__label {
+        &:before {
+          background-color: $color-primary;
+          box-shadow: inset 0 0 0 2px $color-white;
+        }
+      }
+    }
+    &:focus {
+      + .cmp-radio__label {
+        &:before {
+          outline: none;
+          border-color: $color-primary;
+        }
+      }
+    }
+    &:disabled {
+      + .cmp-radio__label {
+        &:before {
+          box-shadow: inset 0 0 0 4px $color-white;
+          border-color: darken($color-white, 25%);
+          background: darken($color-white, 25%);
+        }
+      }
+    }
+    + .cmp-radio__label {
+      &:empty {
+        &:before {
+          margin-right: 0;
+        }
+      }
+    }
+  }
+}
+
+.cmp-radio__label {
+  font: {
+    size: 14px;
+    weight: $font-weight-regular;
+  }
+}
+
+.cmp-radio-groups {
+  text-align: left;
+
+  & &__column {
+    display: inline-flex;
+  }
+}

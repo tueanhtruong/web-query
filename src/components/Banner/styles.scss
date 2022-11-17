@@ -1,0 +1,36 @@
+@use 'src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-banner-item {
+  padding: 16px;
+  background-color: $color-white;
+  border-radius: $default-border-radius;
+  border: 1px solid;
+
+  &--warning {
+    color: $color-warning;
+  }
+
+  &--completed {
+    color: $color-green;
+  }
+
+  &--rejected {
+    color: $color-danger;
+  }
+
+  &__header {
+    align-items: center;
+    font-weight: 500;
+    margin-bottom: 4px;
+  }
+
+  &__text {
+    color: $color-light-black;
+    font-size: 0.875rem;
+  }
+
+  @include mobileScreen {
+    padding: 16px 12px;
+  }
+}

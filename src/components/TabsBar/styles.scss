@@ -1,0 +1,32 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.react-mui-tabs {
+  max-width: 92vw;
+  border-bottom: 1px solid $color-grey-200;
+  margin-bottom: 32px;
+
+  &__indicator {
+    height: 4px !important;
+  }
+
+  &__tab {
+    font-size: 18px !important;
+
+    @include mobileScreen {
+      font-size: 16px !important;
+    }
+
+    color: $color-grey-600 !important;
+    text-transform: capitalize !important;
+    font-weight: 700 !important;
+    padding: 0 !important;
+    min-width: 72px !important;
+    margin-right: 24px !important;
+    margin-bottom: 4px !important;
+
+    &--selected {
+      color: $color-primary !important;
+    }
+  }
+}

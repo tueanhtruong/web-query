@@ -1,0 +1,53 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-view {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+
+  &--row {
+    flex-flow: row wrap;
+  }
+
+  &--row-no-wrap {
+    flex-flow: row;
+  }
+
+  &__justify {
+    &--center {
+      justify-content: center;
+    }
+    &--space-between {
+      justify-content: space-between;
+    }
+    &--flex-start {
+      justify-content: flex-start;
+    }
+    &--flex-end {
+      justify-content: flex-end;
+    }
+    &--space-around {
+      justify-content: space-around;
+    }
+    &--space-evenly {
+      justify-content: space-evenly;
+    }
+  }
+
+  &__align {
+    &--center {
+      align-items: center;
+    }
+    &--flex-start {
+      align-items: flex-start;
+    }
+    &--flex-end {
+      align-items: flex-end;
+    }
+  }
+
+  &__full-width {
+    width: 100%;
+  }
+}

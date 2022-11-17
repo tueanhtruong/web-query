@@ -1,0 +1,86 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.cmp-file-upload {
+  overflow: hidden;
+
+  &__body {
+    border: 1px dashed $color-primary;
+    border-radius: 8px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $color-black-300;
+
+    @include hover;
+
+    @include focus {
+      border-color: $color-primary;
+    }
+  }
+
+  &__additional-upload {
+    width: fit-content;
+  }
+
+  &__image {
+    border-radius: $input-boder-radius;
+    max-width: 400px;
+    position: relative;
+    &.is-loading {
+      opacity: 0.7;
+    }
+  }
+
+  &__image-close {
+    position: absolute;
+    top: 8px;
+    right: 8px;
+    background-color: rgba(255, 255, 255, 0.301);
+    border-radius: 50%;
+    @include hover {
+      background-color: #fff;
+      transition: 0.2s;
+    }
+  }
+
+  &__input {
+    display: none;
+  }
+
+  &__error {
+    margin-top: 4px;
+    color: $color-danger;
+    font: {
+      size: 14px;
+    }
+  }
+
+  &__button {
+    border: 1px dashed $color-primary;
+    font-size: 14px;
+    height: 36px;
+
+    svg {
+      font-size: 18px;
+      color: gray;
+      margin-bottom: 2px;
+    }
+  }
+
+  &__name {
+    font-size: 14px;
+    font-weight: 500;
+    color: $color-link;
+    margin-right: 36px;
+  }
+
+  &__icon {
+    margin-right: 8px;
+    &--trash {
+      font-size: 20px;
+      cursor: pointer;
+    }
+  }
+}

@@ -1,0 +1,122 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.cmp-swicht-list-view {
+  padding: 8px;
+  &__active {
+    border-radius: 8px;
+    background-color: $color-primary-background;
+    div[role='menu'] {
+      visibility: hidden;
+    }
+  }
+}
+
+.cmp-swicht-list-view {
+  padding: 8px;
+  &__active {
+    border-radius: 8px;
+    background-color: $color-primary-background;
+  }
+}
+.icon-people {
+  height: 3em;
+  width: 3em;
+  object-fit: cover;
+  z-index: 20;
+  display: block;
+}
+
+.icon-people {
+  height: 3em;
+  width: 3em;
+  object-fit: cover;
+  z-index: 20;
+  display: block;
+  .cmp-swicht-list-view {
+    padding: 8px;
+    &__active {
+      border-radius: 8px;
+      background-color: $color-primary-background;
+    }
+  }
+}
+
+.cmp-vertical-tabs {
+  .react-tabs {
+    margin-top: 10px;
+    display: flex;
+    text-align: start !important;
+    background: #f4f4f4;
+    font-size: 14px;
+
+    div[role='menu'].visible {
+      visibility: visible;
+    }
+
+    .icon-people {
+      height: 3em;
+      width: 3em;
+      object-fit: cover;
+      z-index: 20;
+      display: block;
+    }
+
+    .icon-people {
+      height: 3em;
+      width: 3em;
+      object-fit: cover;
+      z-index: 20;
+      display: block;
+      .cmp-swicht-list-view {
+        padding: 8px;
+        &__active {
+          border-radius: 8px;
+          background-color: $color-primary-background;
+        }
+      }
+    }
+
+    .cmp-vertical-tabs {
+      .react-tabs {
+        margin-top: 10px;
+        display: flex;
+        text-align: start !important;
+        background: #f4f4f4;
+        font-size: 14px;
+
+        &__tab {
+          height: 72px;
+          list-style: none;
+          padding: 24px 6px;
+          cursor: pointer;
+          color: #656263;
+          vertical-align: middle;
+          background: #ffffff;
+          border-radius: 8px;
+        }
+
+        &__tab-list {
+          display: flex;
+          margin-left: 48px;
+          flex-direction: column;
+          height: 100%;
+          width: 300px;
+          margin-top: 50px;
+          font-family: 'Roboto';
+          font-weight: 400;
+          background: #ffffff;
+        }
+        &__tab--selected {
+          background-color: #ffeeee;
+          border-radius: 0px;
+          color: #292870 !important;
+          border-bottom: none !important;
+        }
+        &__tab-panel {
+          margin-left: 20px;
+        }
+      }
+    }
+  }
+}

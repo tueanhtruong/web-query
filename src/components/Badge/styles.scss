@@ -1,0 +1,26 @@
+@use '~src/scss/vars' as *;
+
+.cmp-deposition-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 8px;
+  border-radius: 16px;
+  border: 1px solid;
+  width: fit-content;
+  &__text {
+    margin-left: 4px;
+  }
+
+  &--active {
+    color: $color-green;
+  }
+  &--completed {
+    color: $color-secondary;
+  }
+  &--pending {
+    color: $color-warning;
+  }
+  &--rejected {
+    color: $color-danger;
+  }
+}

@@ -1,0 +1,16 @@
+@use 'src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-avatar-item {
+  background: radial-gradient(60.42% 60.42% at 52.6% 50%,
+      rgba(226, 72, 127, 0.76) 0%,
+      #b10f49 100%);
+  text-transform: uppercase;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  color: white;
+  border-radius: 50%;
+
+
+}

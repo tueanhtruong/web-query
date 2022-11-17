@@ -1,0 +1,29 @@
+@use './mixin' as *;
+@use './vars' as *;
+
+$width-xs: 960px;
+$width-md: 560px;
+
+.modal {
+  &__full-width {
+    &--xs {
+      width: $width-xs;
+    }
+    &--md {
+      width: $width-md;
+    }
+  }
+}
+
+.modal {
+  &__full-width-height {
+    &--xs {
+      width: $width-xs;
+      height: 100%;
+    }
+    &--md {
+      width: $width-md;
+      height: 100%;
+    }
+  }
+}

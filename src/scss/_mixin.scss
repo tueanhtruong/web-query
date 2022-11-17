@@ -1,0 +1,132 @@
+@use './vars' as *;
+
+@mixin hover {
+  &:not([disabled]):hover {
+    cursor: pointer;
+    @content;
+  }
+}
+
+@mixin active {
+  &:not([disabled]):active {
+    @content;
+  }
+}
+
+@mixin focus {
+  &:not([disabled]):focus {
+    @content;
+  }
+}
+
+@mixin disabled {
+  &:disabled {
+    cursor: not-allowed;
+    @content;
+  }
+}
+
+// Mixin helpers
+@mixin margin-helper($index, $unit) {
+  .mt-#{$index} {
+    margin-top: $index * $unit;
+  }
+
+  .mb-#{$index} {
+    margin-bottom: $index * $unit;
+  }
+  .ml-#{$index} {
+    margin-left: $index * $unit;
+  }
+
+  .mr-#{$index} {
+    margin-right: $index * $unit;
+  }
+
+  .mx-#{$index} {
+    margin-left: $index * $unit;
+    margin-right: $index * $unit;
+  }
+
+  .my-#{$index} {
+    margin-top: $index * $unit;
+    margin-bottom: $index * $unit;
+  }
+}
+
+@mixin padding-helper($index, $unit) {
+  .pt-#{$index} {
+    padding-top: $index * $unit;
+  }
+
+  .pb-#{$index} {
+    padding-bottom: $index * $unit;
+  }
+  .pl-#{$index} {
+    padding-left: $index * $unit;
+  }
+
+  .pr-#{$index} {
+    padding-right: $index * $unit;
+  }
+
+  .px-#{$index} {
+    padding-left: $index * $unit;
+    padding-right: $index * $unit;
+  }
+
+  .py-#{$index} {
+    padding-top: $index * $unit;
+    padding-bottom: $index * $unit;
+  }
+}
+
+@mixin spacing-helper($index, $unit) {
+  @include margin-helper($index, $unit);
+  @include padding-helper($index, $unit);
+}
+
+// reponsive
+@mixin widescreen {
+  @media (max-width: $widescreen) {
+    @content;
+  }
+}
+
+@mixin desktopScreen {
+  @media (max-width: $desktop) {
+    @content;
+  }
+}
+
+@mixin tabletScreen {
+  @media (max-width: $tablet) {
+    @content;
+  }
+}
+
+@mixin mobileScreen {
+  @media (max-width: $mobile) {
+    @content;
+  }
+}
+
+@mixin absoluteTopLeft {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+@mixin absoluteCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@mixin borderColor($color: $color-border) {
+  border-top-color: $color;
+  border-bottom-color: $color;
+  border-left-color: $color;
+  border-right-color: $color;
+}

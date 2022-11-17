@@ -1,0 +1,41 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-btn-yes-no {
+  display: inline-flex;
+  flex-direction: row;
+
+  &__button {
+    border: $default-border;
+    border-color: $color-secondary;
+    color: $color-secondary;
+    background-color: transparent;
+
+    height: $button-normal;
+    min-width: 80px;
+    transition: $default-transition;
+
+    @include hover {
+      filter: brightness(95%);
+    }
+  }
+
+  &__button.is-active {
+    color: $color-white;
+    background-color: $color-secondary;
+  }
+
+  &__button.is-expand {
+    width: 100%;
+    font-weight: 500;
+  }
+
+  &__button:first-child {
+    border-radius: 8px 0 0 8px;
+  }
+
+  &__button:last-child {
+    border-radius: 0 8px 8px 0;
+    margin-left: -1px;
+  }
+}

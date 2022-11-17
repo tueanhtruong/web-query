@@ -1,0 +1,24 @@
+@use './mixin' as *;
+@use './vars' as *;
+
+.react-tabs {
+  & &__tab-list {
+    border-bottom: 1px solid $color-border;
+  }
+
+  & &__tab--selected {
+    background-color: transparent;
+    font-weight: $font-weight-bold;
+    border: none;
+    color: $color-secondary;
+    border-bottom: 3px solid $color-secondary;
+
+    @include focus {
+      border-color: $color-secondary;
+
+      &::after {
+        content: none;
+      }
+    }
+  }
+}

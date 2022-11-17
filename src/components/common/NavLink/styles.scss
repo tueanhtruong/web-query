@@ -1,0 +1,54 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-nav-link {
+  color: $color-link;
+  position: relative;
+
+  @include hover {
+    color: $color-link;
+    text-decoration: underline;
+  }
+
+  &--disabled,
+  &--disabled.cmp-navbar__end--item--link {
+    cursor: progress;
+    // pointer-events: none;
+    color: $color-text-inactive;
+  }
+}
+
+.wrapper {
+  position: absolute;
+  top: calc(50%);
+  left: -16px;
+  transform: translate(0, -50%);
+}
+
+.blob {
+  background: $color-danger;
+  border-radius: 50%;
+  height: 8px;
+  width: 8px;
+
+  box-shadow: 0 0 0 0 rgba($color-danger, 1);
+  transform: scale(1);
+  animation: pulse-navbar 2s infinite;
+}
+
+@keyframes pulse-navbar {
+  0% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba($color-danger, 0.7);
+  }
+
+  70% {
+    transform: scale(1);
+    box-shadow: 0 0 0 10px rgba($color-danger, 0);
+  }
+
+  100% {
+    transform: scale(0.8);
+    box-shadow: 0 0 0 0 rgba($color-danger, 0);
+  }
+}

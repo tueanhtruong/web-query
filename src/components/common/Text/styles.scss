@@ -1,0 +1,13 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-text {
+  white-space: pre-wrap;
+
+  &__title {
+
+
+    letter-spacing: 0.05em;
+    color: $color-black-500;
+  }
+}

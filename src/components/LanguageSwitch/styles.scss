@@ -1,0 +1,9 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+
+.language-container {
+  &__flag {
+    width: 20px;
+  }
+}

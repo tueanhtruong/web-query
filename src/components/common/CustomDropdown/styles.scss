@@ -1,0 +1,125 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.cmp-dropdown {
+  align-self: flex-start;
+
+  &__button-wrap {
+    display: inline-flex;
+    background-color: transparent;
+  }
+
+  &__menu {
+    z-index: 1;
+    position: absolute;
+    overflow-x: hidden;
+    overflow-y: auto;
+
+    background-color: $color-white;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+    padding: 4px 0;
+
+    &--x-left {
+      right: 0;
+    }
+    &--x-right {
+      left: 0;
+    }
+    &--y-top {
+      bottom: calc(100% + 8px);
+    }
+    &--y-bottom {
+      top: calc(100% + 8px);
+    }
+  }
+
+  &__item {
+    padding: 8px 16px;
+    white-space: nowrap;
+    background-color: $color-white;
+    transition: $default-transition;
+    // text-transform: uppercase;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    min-width: 204px;
+    @include hover {
+      background-color: $color-black-50;
+    }
+
+    @include focus {
+      background-color: $color-black-50;
+      text-decoration: none;
+    }
+
+    &--active {
+      background-color: $color-red-light;
+    }
+  }
+
+  &__item-icon {
+    margin-right: 8px;
+  }
+
+  &__menu--y-bottom.visible {
+    animation: menuFadeInFromBottom 0.2s forwards;
+  }
+
+  &__menu--y-bottom.hidden {
+    animation: menuFadeOutToBottom 0.2s forwards;
+  }
+  &__menu--y-top.visible {
+    animation: menuFadeInFromTop 0.2s forwards;
+  }
+
+  &__menu--y-top.hidden {
+    animation: menuFadeOutToTop 0.2s forwards;
+  }
+
+  @keyframes menuFadeInFromTop {
+    0% {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  @keyframes menuFadeOutToTop {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+  }
+
+  @keyframes menuFadeInFromBottom {
+    0% {
+      opacity: 0;
+      transform: translateY(30px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0px);
+    }
+  }
+  @keyframes menuFadeOutToBottom {
+    0% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    100% {
+      visibility: hidden;
+      opacity: 0;
+      transform: translateY(30px);
+    }
+  }
+}

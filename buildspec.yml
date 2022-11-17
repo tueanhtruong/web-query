@@ -1,0 +1,103 @@
+version: 0.1
+
+env:
+  #variables:
+  # key: "value"
+  # key: "value"
+  # parameter-store:
+  #   REACT_APP_TIME_ZONE: /global/APP_TIME_ZONE
+  secrets-manager:
+    AWS_ACCESS_KEY_ID: $AWS_SECRET_ARN:AWS_ACCESS_KEY_ID_DEPLOYMENT
+    AWS_SECRET_ACCESS_KEY: $AWS_SECRET_ARN:AWS_SECRET_ACCESS_KEY_DEPLOYMENT
+    AWS_S3_WEB_URL: $AWS_SECRET_ARN:AWS_S3_WEBLOGIN_URL
+    AWS_WEB_CLOUDFRONT_DISTRIBUTION_ID: $AWS_SECRET_ARN:AWS_WEBLOGIN_CLOUDFRONT_DISTRIBUTION_ID
+    NODE_ENV: $AWS_SECRET_ARN:NODE_ENV
+    REACT_APP_AWS_IDENTITY_REGION: $AWS_SECRET_ARN:AWS_REGION
+    REACT_APP_AWS_USER_POOL_ID: $AWS_SECRET_ARN:AWS_COGNITO_USER_POOL_ID
+    REACT_APP_AWS_USER_POOL_WEB_CLIENT_ID: $AWS_SECRET_ARN:AWS_COGNITO_USER_POOL_APP_ID
+    REACT_APP_AWS_USER_POOL_DOMAIN: $AWS_SECRET_ARN:AWS_COGNITO_ISSUER # pragma: allowlist secret
+    REACT_APP_WEB_URL: $AWS_SECRET_ARN:ENV_WEBLOGIN_URL
+
+    REACT_APP_COOKIE_DOMAIN: $AWS_SECRET_ARN:WEB_COOKIE_DOMAIN
+    REACT_APP_EMPLOYER_WEB_URL: $AWS_SECRET_ARN:ENV_WEBEMPLOYER_URL
+    REACT_APP_CLAIMANT_WEB_URL: $AWS_SECRET_ARN:ENV_WEBCLAIMANT_URL
+    REACT_APP_TPA_WEB_URL: $AWS_SECRET_ARN:ENV_WEBTPA_URL
+    REACT_APP_ADMIN_WEB_URL: $AWS_SECRET_ARN:ENV_WEBADMIN_URL
+
+    REACT_APP_API_URL: $AWS_SECRET_ARN:ENV_API_URL
+    REACT_APP_AWS_S3_WEB_LOGIN_BUCKET_URL: $AWS_SECRET_ARN:ENV_WEB_ASSETS_URL
+    SLACK_WEBHOOKS: $AWS_SECRET_ARN:SLACK_WEBHOOKS
+
+  #exported-variables:
+  # - variable
+  # - variable
+  #git-credential-helper: yes
+
+phases:
+  #install:
+  #If you use the Ubuntu standard image 2.0 or later, you must specify runtime-versions.
+  #If you specify runtime-versions and use an image other than Ubuntu standard image 2.0, the build fails.
+  #runtime-versions:
+  # name: version
+  # name: version
+  #commands:
+  # - command
+  # - command
+  #pre_build:
+  #commands:
+  pre_build:
+    commands:
+      - npm install -g yarn
+      - yarn
+  build:
+    commands:
+      - echo NODE_ENV=production >> .env
+      - echo REACT_APP_AWS_IDENTITY_REGION=$REACT_APP_AWS_IDENTITY_REGION >> .env
+      - echo REACT_APP_AWS_USER_POOL_ID=$REACT_APP_AWS_USER_POOL_ID >> .env
+      - echo REACT_APP_AWS_USER_POOL_WEB_CLIENT_ID=$REACT_APP_AWS_USER_POOL_WEB_CLIENT_ID >> .env
+      - echo REACT_APP_AWS_USER_POOL_DOMAIN=$REACT_APP_AWS_USER_POOL_DOMAIN >> .env
+      - echo REACT_APP_WEB_URL=$REACT_APP_WEB_URL >> .env
+
+      - echo REACT_APP_COOKIE_DOMAIN=$REACT_APP_COOKIE_DOMAIN >> .env
+      - echo REACT_APP_EMPLOYER_WEB_URL=$REACT_APP_EMPLOYER_WEB_URL >> .env
+      - echo REACT_APP_CLAIMANT_WEB_URL=$REACT_APP_CLAIMANT_WEB_URL >> .env
+      - echo REACT_APP_TPA_WEB_URL=$REACT_APP_TPA_WEB_URL >> .env
+      - echo REACT_APP_ADMIN_WEB_URL=$REACT_APP_ADMIN_WEB_URL >> .env
+
+      - echo REACT_APP_API_URL=$REACT_APP_API_URL >> .env
+      - echo REACT_APP_AWS_S3_WEB_LOGIN_BUCKET_URL=$REACT_APP_AWS_S3_WEB_LOGIN_BUCKET_URL >> .env
+
+      - yarn --production
+      - yarn build
+      - aws s3 sync build $AWS_S3_WEB_URL --acl public-read --delete
+      - aws cloudfront create-invalidation --distribution-id $AWS_WEB_CLOUDFRONT_DISTRIBUTION_ID --paths '/*'
+  post_build:
+    commands:
+      - echo $CODEBUILD_BUILD_SUCCEEDING
+      - |
+        if [ "$CODEBUILD_BUILD_SUCCEEDING" = "1" ] ; then
+          curl -X POST -H 'Content-type:application/json' --data '{"type":"mrkdwn","text":"Deploy *Web Login* to *'"$STAGE"'*. *SUCCEEDED!*"}' $SLACK_WEBHOOKS;
+        fi
+      - |
+        if [ "$CODEBUILD_BUILD_SUCCEEDING" = "0" ] ; then
+          curl -X POST -H 'Content-type:application/json' --data '{"type":"mrkdwn","text":"Deploy *Web Login* to *'"$STAGE"'*. *FAILED!*"}' $SLACK_WEBHOOKS;
+        fi
+
+#reports:
+#report-name-or-arn:
+#files:
+# - location
+# - location
+#base-directory: location
+#discard-paths: yes
+#file-format: JunitXml | CucumberJson
+#artifacts:
+#files:
+# - location
+# - location
+#name: $(date +%Y-%m-%d)
+#discard-paths: yes
+#base-directory: location
+#cache:
+#paths:
+# - paths

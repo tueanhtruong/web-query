@@ -1,0 +1,36 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-text-area {
+  height: 72px;
+  padding: 8px 14px;
+  border: $default-border;
+  background-color: $color-white;
+  transition: $default-transition;
+  border-radius: $input-boder-radius;
+  font-size: $body-size;
+
+  &:focus {
+    box-shadow: $focus-shadow;
+  }
+
+  &--error {
+    border-color: $color-danger;
+    &:focus {
+      box-shadow: $error-shadow;
+    }
+  }
+
+  &:disabled {
+    color: $color-black-100;
+  }
+
+  &__icon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+
+    @include hover;
+  }
+}

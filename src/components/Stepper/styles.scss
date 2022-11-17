@@ -1,0 +1,18 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.MuiStepLabel-error {
+  > span > div {
+    color: $color-danger;
+    border: 3px solid $color-danger;
+    background-color: #fff;
+  }
+
+  > span > span {
+    color: $color-danger;
+  }
+}
+
+.stepper-label {
+  color: #6d7176 !important;
+}

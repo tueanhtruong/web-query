@@ -1,0 +1,7 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-divider {
+  border-top: 1px solid $color-grey-300;
+  width: 100%;
+}

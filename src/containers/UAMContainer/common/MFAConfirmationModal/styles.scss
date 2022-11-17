@@ -1,0 +1,10 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.ctn-mfa {
+  padding: 16px 8px;
+
+  @include mobileScreen {
+    padding: 8px 0;
+  }
+}

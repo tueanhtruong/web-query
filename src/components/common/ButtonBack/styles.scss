@@ -1,0 +1,6 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-btn-back {
+  color: $color-black-300;
+}

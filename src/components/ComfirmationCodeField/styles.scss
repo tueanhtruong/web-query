@@ -1,0 +1,47 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-code-field {
+  &__container {
+    display: flex;
+    justify-content: center;
+    width: 100%;
+  }
+
+  &__input--container {
+    margin: 0 4px;
+    width: auto;
+  }
+
+  &__input--container:first-child {
+    margin-left: 0;
+  }
+
+  &__input--container:last-child {
+    margin-right: 0;
+  }
+
+  &__input--container-small {
+    margin: 0 4px;
+    width: auto;
+  }
+
+  &__input--container-small:first-child {
+    margin-left: 0;
+  }
+
+  &__input--container-small:last-child {
+    margin-right: 0;
+  }
+
+  &__input {
+    text-align: center;
+    padding: 0;
+    height: 64px !important;
+    width: 64px !important;
+    @include mobileScreen {
+      height: calc((95vw - 52px) / 6) !important;
+      width: calc((95vw - 52px) / 6) !important;
+    }
+  }
+}

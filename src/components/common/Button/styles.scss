@@ -1,0 +1,185 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-button {
+  height: $button-normal;
+  border-radius: 8px;
+  background-color: $color-primary;
+  color: $color-white;
+  border: none;
+  padding: 0 24px;
+  min-width: 92px;
+
+  font-size: 16px;
+  font-weight: $font-weight-medium;
+
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+
+  transition: $default-linear-trans;
+
+  @include hover {
+    filter: brightness(95%);
+  }
+
+  @include active {
+    // transform: scale(0.98, 0.95);
+    transition: 0s;
+    filter: brightness(90%);
+  }
+
+  @include focus {
+    filter: brightness(85%);
+    box-shadow: $focus-shadow;
+  }
+
+  &--outline {
+    background-color: $color-white;
+    color: $color-primary;
+    border: $default-border-primary;
+  }
+
+  &--secondary-outline {
+    border: $default-border-primary;
+    border-color: $color-secondary;
+    color: $color-secondary;
+    background-color: transparent;
+  }
+
+  &--secondary {
+    background-color: $color-secondary;
+  }
+
+  &--sorting {
+    color: $color-text;
+    background-color: $color-border;
+    padding: 0 8px;
+    min-width: unset;
+  }
+
+  &--text {
+    min-width: auto;
+    padding: 0;
+    background-color: transparent;
+    color: $color-text;
+    border: none;
+  }
+
+  &--link-primary,
+  &--link {
+    background-color: transparent;
+    min-width: auto;
+    padding: 0;
+    color: $color-link;
+    border: none;
+
+    @include hover {
+      text-decoration: underline;
+    }
+
+    @include focus {
+      box-shadow: none;
+      text-decoration: underline;
+    }
+  }
+
+  &--link-primary {
+    color: $color-primary;
+  }
+
+  &--disabled {
+    opacity: 0.3;
+  }
+
+  &--full-width {
+    width: 100%;
+  }
+
+  &__icon {
+    &--left {
+      flex-direction: row;
+      svg {
+        margin-right: 8px;
+      }
+      i {
+        margin-right: 8px;
+      }
+    }
+    &--right {
+      flex-direction: row-reverse;
+      svg {
+        margin-left: 8px;
+      }
+      i {
+        margin-left: 8px;
+      }
+    }
+  }
+
+  // Animation
+  & &__loading {
+    margin-left: -40px;
+    margin-right: -40px;
+    position: relative;
+    opacity: 0;
+    transition: $default-linear-trans;
+    transition-duration: 0.1s;
+    left: 0;
+  }
+
+  &__label {
+    position: relative;
+    left: 0;
+    transition: $default-linear-trans;
+  }
+
+  &--is-loading {
+    padding: 0 32px;
+
+    .cmp-button {
+      &__loading {
+        left: -8px;
+        opacity: 1;
+      }
+      &__label {
+        left: 16px;
+      }
+    }
+  }
+
+  // Animation
+  &--effect:not(&--text):not(&--link) {
+    &::after {
+      content: ' ';
+      position: absolute;
+      left: 0;
+      top: 0;
+      display: block;
+      width: 100%;
+      height: 100%;
+      border-radius: $default-border-radius;
+      box-shadow: 0 0 0 0 rgba($color-primary, 1);
+      transform: scale(1);
+      animation: pulse-navbar 1s forwards;
+    }
+
+    @keyframes pulse-navbar {
+      0% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba($color-primary, 0.4);
+      }
+
+      70% {
+        transform: scale(1);
+        box-shadow: 0 0 0 6px rgba($color-primary, 0);
+      }
+
+      100% {
+        transform: scale(1);
+        box-shadow: 0 0 0 0 rgba($color-primary, 0);
+      }
+    }
+  }
+}

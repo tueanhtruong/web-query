@@ -1,0 +1,70 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.cmp-table-basic {
+  position: relative;
+
+  &__loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.cmp-filter-icon {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+
+  &__icon {
+    color: $color-primary;
+  }
+
+  &__text {
+    color: $color-primary;
+  }
+}
+
+.custom-search-table {
+  position: relative;
+  display: flex;
+  flex: 1 0 auto;
+
+  @include mobileScreen {
+    margin-bottom: 16px;
+  }
+
+  &-search {
+    flex: 0.8 0;
+
+    @include mobileScreen {
+      flex: 1 0;
+    }
+
+    // MuiInputBase-root
+    & div {
+      & fieldset {
+        border-radius: 8px !important;
+        transform: translateY(-3px);
+      }
+    }
+  }
+
+  &-icon {
+    position: absolute !important;
+    top: 0px;
+    right: 2px;
+  }
+}
+
+.custom-footer-table {
+  &-pagination {
+    @include tabletScreen {
+      width: 100%;
+      display: flex;
+      justify-content: center;
+    }
+  }
+}

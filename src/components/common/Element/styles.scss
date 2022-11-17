@@ -1,0 +1,17 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.form-element {
+  width: 100%;
+  text-align: left;
+
+  label {
+    margin-bottom: 4px;
+  }
+
+  p {
+    margin-top: 4px;
+    color: $color-danger;
+    font-size: 14px;
+  }
+}

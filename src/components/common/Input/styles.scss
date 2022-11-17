@@ -1,0 +1,71 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-input {
+  height: $input-normal;
+  padding: $input-padding;
+  border: $default-border;
+  background-color: $color-white;
+  transition: $default-transition;
+  border-radius: $input-boder-radius;
+  font-size: $body-size;
+
+  &--icon {
+    padding-right: 36px;
+
+    &.left {
+      padding-left: 36px;
+      padding-right: 16;
+    }
+  }
+
+  &:focus {
+    // box-shadow: $focus-shadow;
+    border: $default-border-primary;
+  }
+
+  &--error {
+    border-color: $color-danger;
+
+    &:focus {
+      border-color: $color-danger;
+      // box-shadow: $error-shadow;
+    }
+  }
+
+  &:disabled {
+    color: $color-black-500;
+    background-color: #f5f5f5;
+    border: none;
+  }
+
+  &__icon {
+    position: absolute !important;
+    top: 50%;
+    right: 8px;
+    transform: translateY(-56%);
+    width: 16px;
+
+    & span.MuiIconButton-label {
+      & span {
+        display: none !important;
+      }
+    }
+
+    @include hover;
+
+    &.left {
+      left: 16px;
+    }
+
+    &.error {
+      & svg {
+        background-color: #fff;
+      }
+    }
+  }
+
+  &__icon[type='button'] {
+    width: 24px;
+  }
+}

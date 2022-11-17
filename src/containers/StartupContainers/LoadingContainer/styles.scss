@@ -1,0 +1,16 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.ctn-loading {
+  position: fixed;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  z-index: 999;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(51, 51, 51, 0.7);
+}

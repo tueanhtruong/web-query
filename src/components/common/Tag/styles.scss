@@ -1,0 +1,26 @@
+@use 'src/scss/vars' as *;
+@use 'src/scss/mixin' as *;
+
+.tag {
+  border-radius: 16px !important;
+  font-weight: 500;
+  font-size: 14px !important;
+  padding: 0 12px !important;
+
+  &.is-info.is-light {
+    background-color: #d5e4f5 !important;
+    color: #2c70cd !important;
+  }
+  &.is-danger.is-light {
+    background-color: #ffc8c8 !important;
+    color: #eb5757 !important;
+  }
+  &.is-warning.is-light {
+    background-color: #fff3c8 !important;
+    color: #f5a839 !important;
+  }
+  &.is-success.is-light {
+    background-color: #ebf9eb !important;
+    color: #0f7625 !important;
+  }
+}

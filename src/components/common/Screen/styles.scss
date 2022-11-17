@@ -1,0 +1,44 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-screen {
+  position: relative;
+  // padding-top: $navbar-height;
+  // min-height: calc(100vh - #{$navbar-height});
+  min-height: 100vh;
+  transition: 0.6s;
+
+  &__loader {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.35);
+    height: calc(100vh - #{$navbar-height});
+  }
+
+  &__navbar {
+    padding-top: $navbar-height;
+    min-height: calc(100vh - #{$navbar-height});
+  }
+
+  &__sidebar:not(.is-collapse) {
+    // animation: slideRight 0.6s forwards;
+    padding-left: $sidebar-width;
+  }
+  &__sidebar.is-collapse {
+    padding-left: $sidebar-mini-width;
+  }
+
+  &__sidebar.is-mini {
+    padding-left: 0;
+  }
+
+  @keyframes slideRight {
+    from {
+      padding-left: 0;
+    }
+    to {
+      padding-left: $sidebar-width;
+    }
+  }
+}

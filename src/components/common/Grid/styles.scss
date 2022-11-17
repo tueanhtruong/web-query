@@ -1,0 +1,12 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-grid {
+  &__item {
+    &--empty.column {
+      @include tabletScreen {
+        display: none;
+      }
+    }
+  }
+}

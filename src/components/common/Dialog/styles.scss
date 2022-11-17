@@ -1,0 +1,61 @@
+@use '~src/scss/vars' as *;
+@use '~src/scss/mixin' as *;
+
+.cmp-dialog {
+  margin: 0 !important;
+  padding: 0;
+
+  @include mobileScreen {
+    width: calc(96%) !important;
+    margin: 4px !important;
+  }
+
+  @include mobileScreen {
+    margin: 0px;
+  }
+
+  &__close-icon {
+    position: absolute !important;
+    width: fit-content;
+    top: 8px;
+    right: 8px;
+    z-index: 12;
+  }
+
+  &__title {
+    // border-bottom: 1px solid #ebebeb;
+    padding-bottom: 0px;
+
+    @include mobileScreen {
+      padding: 16px 16px 0 16px;
+    }
+  }
+
+  &__content {
+    @include mobileScreen {
+      padding: 8px 16px;
+    }
+  }
+
+  &__footer {
+    padding: 16px 24px !important;
+
+    @include mobileScreen {
+      padding: 16px 16px !important;
+    }
+
+    // dialog with border top of footer
+    // &--border {
+    //   padding: 16px 24px !important;
+    //   border-top: 1px solid #ebebeb;
+
+    //   @include mobileScreen {
+    //     padding: 16px !important;
+    //   }
+    // }
+  }
+
+  &__content--visible {
+    overflow: visible;
+  }
+}
