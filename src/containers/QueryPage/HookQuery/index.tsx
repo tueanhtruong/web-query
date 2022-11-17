@@ -17,6 +17,7 @@ const Dashboard: React.FC<Props> = ({ onShowDialog }) => {
   const handleGetPosts = (params: TableParams) => {
     const { take, skip } = params;
     const pageIndex = (take + skip) / take;
+    console.log('pageIndex: ', pageIndex);
     return setParams({ page: pageIndex });
   };
 

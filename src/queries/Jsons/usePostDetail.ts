@@ -18,6 +18,7 @@ export function usePostsDetail(
       const [_, ...params] = query.queryKey;
       return responseWrapper<ApiResponseType<Post>>(apiJsonClient.getPostDetail, params);
     },
+
     ...options,
   });
 

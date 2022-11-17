@@ -13,17 +13,12 @@ const Dashboard: React.FC<Props> = () => {
     isFetching,
     refetch,
   } = useQuery([API_KEYS.TODO], {
-    queryFn: (params) =>
-      new Promise((res, rej) =>
-        fetch('https://gorest.co.in/public/v2/users')
-          .then(async (response) => {
-            const responseData = await response.json();
-            if (responseData?.message) return rej(responseData);
-            return res(responseData);
-          })
-          .catch((err) => rej(err))
-      ),
+    queryFn: (params) => {
+      console.log('params: ', params);
+      return fetch('https://gorest.co.in/public/v2/usersdsuahduisah').then((res) => res.json());
+    },
     onSuccess(data) {
+      console.log('onSuccess: called');
       Toastify.success('Call api successfully');
     },
     onError(err) {

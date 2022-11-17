@@ -3,13 +3,16 @@ import { connect } from 'react-redux';
 import { Button, Grid, LoadingCommon, Text, View, ViewItem } from 'src/components/common';
 import { usePostsDetail } from 'src/queries';
 import { IRootState } from 'src/redux/rootReducer';
-import { Toastify } from 'src/services';
+import { ErrorService, Toastify } from 'src/services';
 
 const Dashboard: React.FC<Props> = ({ isOpenRefetch = false }) => {
   const { postDetail, loading, refetchPostDetail } = usePostsDetail({
-    id: '1308',
+    id: '519',
     onSuccess(data) {
       Toastify.success('Call API get Post Detail Success');
+    },
+    onError(err) {
+      ErrorService.handler(err);
     },
   });
   return (

@@ -49,6 +49,7 @@ const Routing: React.FC<{ location: Location }> = (props) => {
       {/* <ChangeTenantButton /> */}
       <Switch location={props.location}>
         <Route path={PATHS.root} render={() => <Redirect to={PATHS.query} />} exact />
+
         <CustomRoute path={PATHS.mutationQuery} component={QueryVsMutation} />
         <CustomRoute path={PATHS.basicQuery} component={BasicQuery} />
         <CustomRoute path={PATHS.lazyQuery} component={LazyQuery} />

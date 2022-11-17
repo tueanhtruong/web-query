@@ -3,12 +3,15 @@ import { connect } from 'react-redux';
 import { Button, Grid, LoadingCommon, Text, View, ViewItem } from 'src/components/common';
 import { usePostDetailByMutation } from 'src/queries';
 import { IRootState } from 'src/redux/rootReducer';
-import { Toastify } from 'src/services';
+import { ErrorService, Toastify } from 'src/services';
 
 const Dashboard: React.FC<Props> = ({ isOpenRefetch = false }) => {
   const { data, getPostDetailByMutation, isLoading } = usePostDetailByMutation({
     onSuccess(data) {
       Toastify.success('Call API get Post Detail By Mutation Success');
+    },
+    onError(error, variables, context) {
+      ErrorService.handler(error);
     },
   });
   return (
@@ -28,7 +31,7 @@ const Dashboard: React.FC<Props> = ({ isOpenRefetch = false }) => {
       <View isRowWrap flexGrow={1} justify="flex-end" renderIf={isOpenRefetch}>
         <Button
           isLoading={isLoading}
-          onClick={() => getPostDetailByMutation('1308')}
+          onClick={() => getPostDetailByMutation('519')}
           className="ml-16"
         >
           Refresh

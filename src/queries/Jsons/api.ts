@@ -2,6 +2,7 @@ import apisauce from 'apisauce';
 import axios from 'axios';
 import appConfig from 'src/appConfig';
 import { newCancelToken, stringify } from 'src/utils';
+import { Post } from './types';
 
 axios.defaults.withCredentials = true;
 
@@ -21,13 +22,13 @@ const create = (baseURL = 'https://gorest.co.in/public/v2') => {
     timeout: appConfig.CONNECTION_TIMEOUT,
   });
 
-  // api.axiosInstance.interceptors.request.use((config) => {
-  //   return new Promise((res) => {
-  //     config.headers.Authorization =
-  //       'Bearer d63b0c93e975c361a2ba1e74223ba18cce1a38cedca948e3c9a310db156a6fc1';
-  //     res(config);
-  //   });
-  // });
+  api.axiosInstance.interceptors.request.use((config) => {
+    return new Promise((res) => {
+      config.headers.Authorization =
+        'Bearer d63b0c93e975c361a2ba1e74223ba18cce1a38cedca948e3c9a310db156a6fc1';
+      res(config);
+    });
+  });
 
   const getRoot = () => api.get('');
   const getPosts = (params) => {
@@ -36,6 +37,9 @@ const create = (baseURL = 'https://gorest.co.in/public/v2') => {
   };
   const getPostDetail = (id: string) => {
     return api.get(`/posts/${id}`, {}, newCancelToken());
+  };
+  const updatePostDetail = (body: Post) => {
+    return api.put(`/posts/${body.id}`, body, newCancelToken());
   };
 
   //
@@ -50,6 +54,7 @@ const create = (baseURL = 'https://gorest.co.in/public/v2') => {
     getRoot,
     getPosts,
     getPostDetail,
+    updatePostDetail,
   };
 };
 

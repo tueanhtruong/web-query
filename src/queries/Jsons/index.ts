@@ -8,3 +8,4 @@ export * from './useLazyPosts';
 export * from './usePostDetail';
 export * from './usePostDetailByMutation';
 export * from './usePosts';
+export * from './useUpdatePost';
